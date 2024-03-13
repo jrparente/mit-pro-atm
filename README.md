@@ -21,6 +21,13 @@
 
 Developed as part of the MITxPro course in Full Stack Development with MERN, is a simple ATM machine simulation. It allows users to perform basic ATM operations such as deposits and cashback transactions. The interface is designed with Bootstrap for a clean and intuitive user experience. This project serves as a practical exercise offering insights into state management and form validation.
 
+### Improvements I made
+
+- Added validation so users can’t withdraw more money than the account balance
+- Added the select field, modifying the user interface to require users to select deposit or withdraw before an input field is visible
+- Added minimal styling to all the elements, using a combination of Bootstrap and CSS
+- Added functionality to reset the form after a successful transaction
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Built With

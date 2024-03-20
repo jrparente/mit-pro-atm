@@ -27,6 +27,8 @@ Developed as part of the MITxPro course in Full Stack Development with MERN, is 
 - Added the select field, modifying the user interface to require users to select deposit or withdraw before an input field is visible
 - Added minimal styling to all the elements, using a combination of Bootstrap and CSS
 - Added functionality to reset the form after a successful transaction
+- Added dark mode styles, updated automatically based on the user’s system preferences
+- Added transaction history, displaying the date, transaction amount, and balance
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

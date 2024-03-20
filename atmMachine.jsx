@@ -1,9 +1,8 @@
-const ATMDeposit = ({ deposit, isDeposit, onChange, isValid }) => {
+const ATMDeposit = ({ deposit, onChange, isValid }) => {
   const choice = ["Deposit", "Cash Back"];
 
   return (
     <label>
-      <h3> {choice[Number(!isDeposit)]}</h3>
       <div className="atm-input">
         <input
           type="number"
@@ -28,6 +27,7 @@ const Account = () => {
   const [isDeposit, setIsDeposit] = React.useState(true);
   const [atmMode, setAtmMode] = React.useState(null);
   const [validTransaction, setValidTransaction] = React.useState(false);
+  const [history, setHistory] = React.useState([]);
 
   let status = `Account Balance $ ${totalState} `;
 
@@ -48,6 +48,14 @@ const Account = () => {
     event.preventDefault();
     let newTotal = isDeposit ? totalState + deposit : totalState - deposit;
     setTotalState(newTotal);
+    setHistory([
+      ...history,
+      {
+        date: new Date().toLocaleString(),
+        transaction: isDeposit ? `+$${deposit}` : `-$${deposit}`,
+        balance: newTotal,
+      },
+    ]);
     setValidTransaction(false);
     setDeposit("");
   };
@@ -81,14 +89,37 @@ const Account = () => {
 
         {atmMode !== null && (
           <>
-            <div className="divider"></div>
             <ATMDeposit
               deposit={deposit}
               onChange={handleChange}
-              isDeposit={isDeposit}
               isValid={validTransaction}
             />
           </>
+        )}
+
+        {history && history.length > 0 && (
+          <div className="d-flex flex-column justify-content-center w-100">
+            <div className="divider"></div>
+            <h3>Transaction History</h3>
+            <ul className="transaction-list">
+              <li className="transaction">
+                <h5>Date</h5>
+                <div className="transaction-values">
+                  <h5>Amount</h5>
+                  <h5>Balance</h5>
+                </div>
+              </li>
+              {history.map((transaction, index) => (
+                <li key={index} className="transaction">
+                  <span>{transaction.date}</span>
+                  <div className="transaction-values">
+                    <span>{transaction.transaction}</span>
+                    <span>{` $${transaction.balance}`}</span>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
         )}
       </form>
     </div>

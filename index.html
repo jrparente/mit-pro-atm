@@ -8,64 +8,7 @@
   <!-- ----------------- Bootstrap header START ----------------- -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
     integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
-  <style>
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-    }
-
-    input,
-    button,
-    select {
-      font: inherit;
-    }
-
-    select {
-      padding: 0.5rem;
-      font-size: 1.2rem;
-    }
-
-    .form {
-      width: 100%;
-      margin: 1rem auto;
-      max-width: 35rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      align-items: start;
-      padding: 1rem;
-      border: 1px solid #ccc;
-    }
-
-    .divider {
-      margin: 1rem 0;
-      border-bottom: 1px solid #ccc;
-      width: 100%;
-    }
-
-    label {
-      width: 100%;
-    }
-
-    .atm-input {
-      display: flex;
-      width: 100%;
-      gap: 0.5rem;
-    }
-
-    input[type="number"] {
-      width: 100%;
-      padding: 0.5rem;
-      font-size: 1.2rem;
-    }
-
-    input[type="submit"] {
-      padding: 0.5rem 1rem;
-      font-size: 1.2rem;
-      cursor: pointer;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -77,6 +20,18 @@
   <!-- Load our React component. -->
 
   <script src="atmMachine.jsx" defer type="text/babel"></script>
+  <script>
+    const html = document.querySelector('html');
+
+    const systemPreference = window.matchMedia('(prefers-color-scheme: dark)');
+
+    if (systemPreference.matches) {
+      html.setAttribute('data-theme', 'dark');
+    } else {
+      html.setAttribute('data-theme', 'light');
+    }
+
+  </script>
 </body>
 
 </html>
